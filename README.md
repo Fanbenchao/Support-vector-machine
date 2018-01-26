@@ -1,10 +1,17 @@
 CS231
-这里记录的算法是CS231上的SVM的loss function，在这里我希望可以记录一些自己对于课程中的问题的理解：
+    这里记录的算法是CS231上的SVM的loss function，在这里我希望可以记录一些自己对于课程中的问题的理解：
 首先是SVM算法，应该就是一个loss function,用来评判我们的模型的表现好坏的标准，预测真值与预测假值
 之间确定一段安全区，不至于两者过于接近，当我们有足够的信心确定预测真值是正确的时候，我们可以停止
 训练，反之，我们通过不断的迭代来完成我们的目标。
-在课程中还讲到了过拟合的问题，尤其是L1 regularization和L2 regularization，L1更加倾向与将W稀疏化，
+    在课程中还讲到了过拟合的问题，尤其是L1 regularization和L2 regularization，L1更加倾向与将W稀疏化，
 L2更倾向于将W的值均匀的分散到所有值中，原因请参看L1与L2的定义公式。
 L1 = sum(abs(W));L2 = sum(sqrt(W))
 还有一个很好观点，就是在SVM中当初始的W很小时，预测值趋近与0，这是SVM的loss趋近与1，这个可以用来
 作为debug的工具。
+    接下来我希望介绍另一个loss function，softmax: P{Y = K|X = xi} = exp(Sk)/sum(S)
+Li = -log(P);L = sum(L)
+对于soft max我们可以看出这是一个概率分析，同样我们希望通过最小化L来确保我们的模型表现良好，
+即令P趋于1，这里我们仍然考虑当W的值很小，即scores值很小时，L趋于N，其中N为类别，可以用来
+debug。
+    接下来我们分析SVM与softmax的不同，对于SVM当某一类别的分数已经越过安全区，可以确保足够确信
+能够判别就会停止训练，相反softmax会不断的迭代，希望P能更趋于1。
