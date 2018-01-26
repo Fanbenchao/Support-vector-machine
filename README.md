@@ -5,3 +5,4 @@ CS231
 训练，反之，我们通过不断的迭代来完成我们的目标。
 在课程中还讲到了过拟合的问题，尤其是L1 regularization和L2 regularization，L1更加倾向与将W稀疏化，
 L2更倾向于将W的值均匀的分散到所有值中，原因请参看L1与L2的定义公式。
+L1 = sum(abs(W));L2 = sum(sqrt(W))
